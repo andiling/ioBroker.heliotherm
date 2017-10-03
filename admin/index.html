@@ -1,0 +1,69 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+
+    <script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
+    <script type="text/javascript" src="../../js/translate.js"></script>
+    <script type="text/javascript" src="../../js/adapter-settings.js"></script>
+    <script type="text/javascript" src="words.js"></script>
+
+    <script type="text/javascript">
+
+        function load(settings, onChange) {
+            if (!settings) return;
+
+            $('.value').each(function () {
+                var key = $(this).attr('id');
+                var $value = $('#' + key + '.value');
+                if ($value.attr('type') === 'checkbox') {
+                    $value.prop('checked', settings[key]).change(function() {
+                        onChange();
+                    });
+                } else {
+                    $value.val(settings[key]).change(function() {
+                        onChange();
+                    }).keyup(function() {
+                        onChange();
+                    });
+                }
+            });
+            // Signal to admin, that no changes yet
+            onChange(false);
+        }
+
+        // ... and the function save has to exist.
+        // you have to make sure the callback is called with the settings object as first param!
+        function save(callback) {
+            // example: select elements with class=value and build settings object
+            var obj = {};
+
+
+            $('.value').each(function () {
+                var $this = $(this);
+                if ($this.attr('type') === 'checkbox') {
+                    obj[$this.attr('id')] = $this.prop('checked');
+                } else {
+                    obj[$this.attr('id')] = $this.val();
+                }
+            });
+            callback(obj);
+        }
+    </script>
+
+</head>
+<body>
+    <div id="adapter-container">
+        <table><tr>
+            <td><img src="Logo.jpg"/></td>
+            <td><h3 class="translate">Heliotherm adapter settings</h3></td>
+        </tr></table>
+        <table>
+            <tr><td><label class="translate" for="host">Modem IP:</label></td><td class="admin-icon"></td><td><input class="value" id="host" /></td></tr>
+            <tr><td><label class="translate" for="port">Modem Port:</label></td><td class="admin-icon"></td><td><input class="value" id="port" size="5" maxlength="5"/></td></tr>
+        </table>
+    </div>
+</body>
+</html>
