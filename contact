@@ -1,0 +1,54 @@
+Hallo Andiling
+
+Deine Heliothermschnittstelle interessiert mich sehr.
+Leider kann ich diese im ioBroker nicht installieren.
+Gibts etwas spezielles zu beachten ?
+Moxa läuft bei mir bereits mit dem Heliotherm eigenen Tool Homecontrol.
+Vielen Dank für Deine Antwort im Voraus.
+
+Gruss
+Matt
+contact : matheripper-at-gmx.net
+
+$ ./iobroker url "https://github.com/andiling/ioBroker.heliotherm" --debug
+install https://github.com/andiling/ioBroker.heliotherm/tarball/master
+npm install https://github.com/andiling/ioBroker.heliotherm/tarball/master --production --save --prefix "/opt/iobroker" (System call)
+npm
+
+ERR!
+Linux 3.10.102
+npm
+
+ERR!
+
+argv
+"/usr/bin/node" "/usr/bin/npm" "install" "https://github.com/andiling/ioBroker.heliotherm/tarball/master" "--production" "--save" "--prefix" "/opt/iobroker"
+npm
+ERR! node v6.14.4npm ERR! npm  v3.10.10
+
+npm ERR! path /tmp/npm-457-62655398/unpack-8a010bb6/package.jsonnpm
+ERR! code ENOENTnpm ERR! errno -2
+npm ERR! syscall open
+
+
+npm
+
+ERR!
+
+enoent
+ENOENT: no such file or directory, open '/tmp/npm-457-62655398/unpack-8a010bb6/package.json'npm
+ERR! enoent ENOENT: no such file or directory, open '/tmp/npm-457-62655398/unpack-8a010bb6/package.json'
+npm ERR! enoent This is most likely not a problem with npm itselfnpm ERR! enoent and is related to npm not being able to find a file.
+npm ERR! enoent 
+
+
+npm
+
+ERR!
+Please include the following file with any support request:
+npm
+
+ERR!
+    /opt/iobroker/npm-debug.log
+ERROR: host.ioBroker Cannot install https://github.com/andiling/ioBroker.heliotherm/tarball/master: 254
+ERROR: process exited with code 25
